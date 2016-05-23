@@ -6,13 +6,13 @@ IFS=$'\n\t'
 if [ -z "$(ls -A "${APPDIR}/userdata")" ]; then
   # Copy userdata dir
   echo "No userdata found... initializing."
-  sudo cp -av "${APPDIR}/userdata.dist/." "${APPDIR}/userdata/"
+  cp -av "${APPDIR}/userdata.dist/." "${APPDIR}/userdata/"
 fi
 
 if [ -z "$(ls -A "${APPDIR}/conf")" ]; then
   # Copy userdata dir
   echo "No configuration found... initializing."
-  sudo cp -av "${APPDIR}/conf.dist/." "${APPDIR}/conf/"
+  cp -av "${APPDIR}/conf.dist/." "${APPDIR}/conf/"
 fi
 
 # Prettier interface

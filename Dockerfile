@@ -5,7 +5,7 @@ FROM multiarch/ubuntu-debootstrap:amd64-wily
 ARG ARCH=amd64
 
 ARG DOWNLOAD_URL="https://openhab.ci.cloudbees.com/job/openHAB-Distribution/lastSuccessfulBuild/artifact/distributions/openhab-online/target/openhab-online-2.0.0-SNAPSHOT.zip"
-ENV APPDIR="/openhab" OPENHAB_HTTP_PORT='8080' OPENHAB_HTTPS_PORT='8443' EXTRA_JAVA_OPTS=''
+ENV APPDIR="/openhab" OPENHAB_HTTP_PORT='8080' OPENHAB_HTTPS_PORT='8443' EXTRA_JAVA_OPTS='' DEBUG_PARAMETERS=''
 
 # Install Basepackages
 RUN \
@@ -52,5 +52,5 @@ RUN chown -R openhab:openhab ${APPDIR}
 USER openhab
 # Expose volume with configuration and userdata dir
 VOLUME ${APPDIR}/conf ${APPDIR}/userdata ${APPDIR}/addons
-EXPOSE 8080 8443 5555
+EXPOSE 8080 8443 5555 8101
 CMD ["server"]

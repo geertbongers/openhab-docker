@@ -16,10 +16,10 @@ if [ -z "$(ls -A "${APPDIR}/conf")" ]; then
 fi
 
 # Prettier interface
-if [ "$1" = 'server' ] || [ "$1" = 'openhab' ]; then
+if [ "$1" = 'debug' ] || [ -n "$DEBUG_PARAMETERS" ]; then
+  eval "${APPDIR}/start_debug.sh $DEBUG_PARAMETERS"
+elif [ "$1" = 'server' ] || [ "$1" = 'openhab' ]; then
   eval "${APPDIR}/start.sh"
-elif [ "$1" = 'debug' ]; then
-  eval "${APPDIR}/start_debug.sh"
 elif [ "$1" = 'console' ] || [ "$1" = 'shell' ]; then
   exec "${APPDIR}/runtime/karaf/bin/client"
 else

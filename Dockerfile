@@ -53,5 +53,5 @@ RUN chown -R openhab:openhab ${APPDIR}
 USER openhab
 # Expose volume with configuration and userdata dir
 VOLUME ${APPDIR}/conf ${APPDIR}/userdata ${APPDIR}/addons
-EXPOSE 8080 8443 5555 8101
+EXPOSE 8080 8443 5555
 CMD ["server"]

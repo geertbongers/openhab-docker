@@ -17,7 +17,7 @@ fi
 
 # Prettier interface
 if [ -n "$START_COMMAND" ]; then
-  exec "$START_COMMAND"
+  eval "$START_COMMAND"
 elif [ "$1" = 'debug' ] || [ -n "$DEBUG_PARAMETERS" ]; then
   eval "${APPDIR}/start_debug.sh $DEBUG_PARAMETERS"
 elif [ "$1" = 'server' ] || [ "$1" = 'openhab' ]; then

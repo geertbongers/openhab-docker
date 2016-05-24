@@ -16,7 +16,9 @@ if [ -z "$(ls -A "${APPDIR}/conf")" ]; then
 fi
 
 # Prettier interface
-if [ "$1" = 'debug' ] || [ -n "$DEBUG_PARAMETERS" ]; then
+if [ -n "$START_COMMAND" ]; then
+  exec "$START_COMMAND"
+elif [ "$1" = 'debug' ] || [ -n "$DEBUG_PARAMETERS" ]; then
   eval "${APPDIR}/start_debug.sh $DEBUG_PARAMETERS"
 elif [ "$1" = 'server' ] || [ "$1" = 'openhab' ]; then
   eval "${APPDIR}/start.sh"

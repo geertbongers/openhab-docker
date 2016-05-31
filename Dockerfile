@@ -6,6 +6,7 @@ ARG ARCH=amd64
 
 ARG DOWNLOAD_URL="https://openhab.ci.cloudbees.com/job/openHAB-Distribution/lastSuccessfulBuild/artifact/distributions/openhab-online/target/openhab-online-2.0.0-SNAPSHOT.zip"
 ENV APPDIR="/openhab" OPENHAB_HTTP_PORT='8080' OPENHAB_HTTPS_PORT='8443' EXTRA_JAVA_OPTS='' START_COMMAND='' DEBUG_PARAMETERS=''
+ENV LC_ALL C.UTF-8
 
 # Install Basepackages
 RUN \
@@ -15,8 +16,14 @@ RUN \
       sudo \
       unzip \
       wget \
-    && rm -rf /var/lib/apt/lists/*
+      locales
 
+
+RUN dpkg-reconfigure locales && \
+    locale-gen en_US.UTF-8 && \
+    /usr/sbin/update-locale LANG=en_US.UTF-8
+
+RUN rm -rf /var/lib/apt/lists/*
 # Install Oracle Java
 RUN \
   echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \

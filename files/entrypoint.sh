@@ -19,7 +19,7 @@ fi
 if [ -n "$START_COMMAND" ]; then
   eval "$START_COMMAND"
 elif [ "$1" = 'debug' ] || [ -n "$DEBUG_PARAMETERS" ]; then
-  eval "${APPDIR}/start_debug.sh $DEBUG_PARAMETERS"
+  eval "echo 'log:tail' | ${APPDIR}/start_debug.sh $DEBUG_PARAMETERS"
 elif [ "$1" = 'server' ] || [ "$1" = 'openhab' ]; then
   eval "${APPDIR}/start.sh"
 elif [ "$1" = 'console' ] || [ "$1" = 'shell' ]; then

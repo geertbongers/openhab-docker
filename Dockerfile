@@ -5,7 +5,7 @@ FROM multiarch/ubuntu-debootstrap:amd64-wily
 ARG ARCH=amd64
 
 ARG DOWNLOAD_URL="https://openhab.ci.cloudbees.com/job/openHAB-Distribution/lastSuccessfulBuild/artifact/distributions/openhab-online/target/openhab-online-2.0.0-SNAPSHOT.zip"
-ENV APPDIR="/openhab" OPENHAB_HTTP_PORT='8080' OPENHAB_HTTPS_PORT='8443' EXTRA_JAVA_OPTS='' START_COMMAND='' DEBUG_PARAMETERS=''
+ENV APPDIR="/openhab" OPENHAB_HTTP_PORT='8080' OPENHAB_HTTPS_PORT='8443' EXTRA_JAVA_OPTS='' START_COMMAND='' DEBUG_PARAMETERS='' KARAF_SHELL_COMMAND=''
 ENV LC_ALL C.UTF-8
 
 # Install Basepackages
